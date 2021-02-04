@@ -39,11 +39,11 @@ class ThreadConfigHandler:
         self.threads[threadId]["latestId"] = latestId
         self._write()
     
-    def enableThread(self, id):
-        self.threads[id]["enabled"] = True
+    def enableThread(self, threadId):
+        self.threads[threadId]["enabled"] = True
         self._write()
 
-    def disableThread(self,id):
-        self.threads[id]["enabled"] = False
+    def disableThread(self, threadId):
+        self.threads[threadId]["enabled"] = False
         self._write()
 

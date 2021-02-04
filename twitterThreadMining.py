@@ -2,9 +2,14 @@ import tweepy
 
 import config
 
-auth = tweepy.OAuthHandler(config.twitter_apikey, config.twitter_apisecret)
 
-api = tweepy.API(auth)
+api = None
+
+
+def init():
+    global api
+    auth = tweepy.OAuthHandler(config.twitter_apikey, config.twitter_apisecret)
+    api = tweepy.API(auth)
 
 
 # Using code from https://github.com/lihkinVerma/Twitter-thread-mining
