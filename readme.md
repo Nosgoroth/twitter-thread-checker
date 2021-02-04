@@ -14,3 +14,5 @@ CLI management of threads in watch not implemented, for now edit `threads.json` 
     }
 }
 ```
+
+Uses the tweepy library and code from [lihkinVerma](https://github.com/lihkinVerma/Twitter-thread-mining).
