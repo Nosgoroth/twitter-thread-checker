@@ -1,4 +1,5 @@
-import json
+import json, pathlib
+from os.path import join as pathjoin
 
 class ThreadConfigHandler:
 
@@ -8,9 +9,12 @@ class ThreadConfigHandler:
     def __init__(self):
         self._read()
 
+    def getAbspath(self):
+        return pathjoin(pathlib.Path(__file__).parent.absolute(), self.filename)
+
     def _read(self):
         try:    
-            with open(self.filename, 'r') as f:
+            with open(self.getAbspath(), 'r') as f:
                 self.threads = json.load(f)
         except:
             self.threads = {}
@@ -18,7 +22,7 @@ class ThreadConfigHandler:
     
     def _write(self):
         try:
-            with open(self.filename, 'w') as f:
+            with open(self.getAbspath(), 'w') as f:
                 json.dump(self.threads, f)
         except:
             pass
