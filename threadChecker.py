@@ -1,8 +1,8 @@
 #!/usr/local/bin/python3
 
 #Standard library
-from pprint import pprint
 from optparse import OptionParser
+from html import unescape
 
 # Program files
 from pushover import pushover
@@ -28,9 +28,10 @@ def notifyThreads():
         if len(newTweets) > 0:
             print("%s new tweets" % len(newTweets))
             for tweet in newTweets:
+                text = unescape(tweet.full_text)
                 print("\n\n")
-                print(tweet.full_text)
-                pushover(tweet.full_text)
+                print(text)
+                pushover(text)
             lastTweet = newTweets[len(newTweets)-1]
             threadconfig.setThreadLatestId(thread["id"], lastTweet.id_str)
         else:
