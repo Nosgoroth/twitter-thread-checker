@@ -42,8 +42,7 @@ def getAllTweetsInThreadAfterThis(tweetId, includeThisTweet=True):
     hasReply = True
     res = api.get_status(tweetId, tweet_mode='extended')
     allTillThread = get_all_tweets(res)
-    if (includeThisTweet):
-        thread.append(res)
+    thread.append(res)
     if allTillThread[-1] > res.id:
         print("Not able to retrieve tweets that old")
         return thread
@@ -61,7 +60,13 @@ def getAllTweetsInThreadAfterThis(tweetId, includeThisTweet=True):
         else:
             quietLong = quietLong + 1
         startIndex = nowIndex
+
+    if not includeThisTweet:
+        thread.pop(0)
+        
     return thread
+
+
 
 def getAllTweetsInThreadBeforeThis(tweetId):
     thread = []
